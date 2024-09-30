@@ -1,4 +1,4 @@
 const str = "string"
-const num = 'number'
-const bool = 'boolean'
-const undef = 'undefined'
+const num = 10
+const bool = true
+const undef = undefined
