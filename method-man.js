@@ -14,11 +14,11 @@ function whisper (low) {
     const newLow = low.toLowerCase();
     return `*${newLow}*`;
 }
-function capitalize (splt) {
-    return splt.charAt(0).toUpperCase() + splt.slice(1);
+function capitalize (low) {
+    return low.charAt(0).toUpperCase() + low.slice(1).toLowerCase();
 } 
 console.log(words(splt))
 console.log(sentence(arr))
 console.log(yell(splt))
 console.log(whisper(low))
-console.log(capitalize(splt))
+console.log(capitalize(low))
