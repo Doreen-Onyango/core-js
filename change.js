@@ -8,10 +8,10 @@
 function get (key) {
     return sourceObject[key];
 }
-console.log(get('num'));
+// console.log(get('num'));
 function set(key, value) {
     sourceObject[key] = value;
     return value;
 }
-console.log(set('num', 39))
+// console.log(set('num', 39))
 
