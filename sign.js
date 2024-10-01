@@ -8,3 +8,10 @@ function sign(num) {
     return -1
 }
 console.log(sign(0))
+function sameSign(a, b) {
+    if (sign(a) === sign(b)) {
+        return true
+    }
+    return false
+}
+console.log(sameSign(-54, 44))
