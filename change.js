@@ -1,20 +1,19 @@
-const sourceObject = {
-    num: 42,
-    bool: true,
-    str: 'some text',
-    log: console.log,
-}
+// const sourceObject = {
+//     num: 42,
+//     bool: true,
+//     str: 'some text',
+//     log: console.log,
+// }
 // const get = (num) => sourceObject[num];
 function get(net) {
-    let  rest = sourceObject.net;
-    return rest;
+    return sourceObject.net;
 }
 
-console.log(get(sourceObject.num));
+// console.log(get(sourceObject.num));
 // const set = (num, value) => sourceObject.num = value;
 function set(value, net) {
     sourceObject.value = net;
     return net;
 }
-console.log(set(sourceObject.num, 32))
+// console.log(set(sourceObject.num, 32))
 
