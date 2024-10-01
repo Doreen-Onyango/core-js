@@ -1,9 +1,3 @@
-const sourceObject = {
-    num: 42,
-    bool: true,
-    str: 'some text',
-    log: console.log,
-}
 const get = (bool) => sourceObject.bool;
 // function get(net) {
 //     return sourceObject.net;
