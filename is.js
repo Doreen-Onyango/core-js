@@ -1,16 +1,49 @@
-// const is = {
-    is.num; value => typeof value === 'number',
-    is.nan; value => Number.isNaN(value),
-    is.str; value => typeof value === 'string',
-    is.bool; value => typeof value === 'boolean',
-    is.undef; value => typeof value === 'undefined',
-    is.def; value => typeof value !== 'undefined',
-    is.arr; value => Array.isArray(value),
-    is.obj; value => value !== null && typeof value === 'object',
-    is.fun; value => typeof value === 'function',
-    is.truthy; value => !!value,
-    is.falsy; value => !value
-// };
+const is = {};
 
-console.log(is.num(34))
+is.num = function (n) {
+    return typeof n === "number";
+};
+
+is.nan = function (n) {
+    return Number.isNaN(n);
+};
+
+is.str = function (s) {
+    return typeof s === "string";
+};
+
+is.bool = function (b) {
+    return typeof b === "boolean";
+};
+
+is.undef = function (u) {
+    return typeof u === "undefined";
+};
+
+is.def = function (d) {
+    return typeof d !== "undefined";
+};
+
+is.arr = function (a) {
+    return Array.isArray(a);
+};
+
+is.obj = function (o) {
+    return o !== null && typeof o === "object" && !Array.isArray(o);
+};
+
+is.fun = function (f) {
+    return typeof f === "function";
+};
+
+is.truthy = function (t) {
+    return !!t;
+};
+
+is.falsy = function (f) {
+    return !f;
+};
+
 console.log(is.bool(true))
+console.log(is.nan('2e'))
+console.log(is.str("hello"))
