@@ -1,6 +1,5 @@
 // Math.round = Math.ceil = Math.floor = Math.trunc = undefined
 
-
 function multiply(a, b) {
     let result = 0;
     const isNeg = (b < 0);
@@ -9,7 +8,7 @@ function multiply(a, b) {
     for (let i = 0; i < b; i++) {
         result += a;
     }
-    return isNeg? -result : result;
+    return isNeg ? -result : result;
 }
 
 function divide(a, b) {
@@ -25,43 +24,56 @@ function divide(a, b) {
         a -= b;
         c++;
     }
-    return isNeg? -c : c;
+    return isNeg ? -c : c;
 }
 
 function modulo(a, b) {
     if (b === 0) {
         throw new Error("no modulo by zero");
     }
-      const divResult = divide(a, b);
+    const divResult = divide(a, b);
     return a - multiply(divResult, b);
 }
 
 function round(num) {
-      if (typeof num !== 'number' || isNaN(num)) {
+    if (typeof num !== 'number' || num !== num) { 
         return 'Error: Input must be a valid number';
     }
-    return num < 0 ? -(Math.abs(num) + 0.5 | 0) : (num + 0.5) | 0;
+
+    const isNeg = num < 0;
+    num = isNeg ? -num : num;
+
+    const roundedValue = (num + 0.5) | 0; 
+    return isNeg ? -roundedValue : roundedValue;
 }
 
 function ceil(num) {
-      if (typeof num !== 'number' || isNaN(num)) {
+    if (typeof num !== 'number' || num !== num) { 
         return 'Error: Input must be a valid number';
     }
-    return num === (num | 0) ? num : (num < 0 ? (num | 0) : (num | 0) + 1);
+
+    const isNeg = num < 0;
+
+    if (isNeg) {
+        return num | 0; 
+    } else {
+        return num === (num | 0) ? num : (num | 0) + 1; 
+    }
 }
 
 function floor(num) {
-      if (typeof num !== 'number' || isNaN(num)) {
-        return 'Error: Input must be a valid number';
+    const isNeg = num < 0;
+
+    if (!isNeg) {
+        return num | 0; 
+    } else {
+        return (num | 0) - (modulo(num, 1) !== 0 ? 1 : 0);
     }
-    return num > 0 ? (num | 0) : (num | 0) - (modulo(num, 1) !== 0 ? 1 : 0);
+
 }
 
 function trunc(num) {
-      if (typeof num !== 'number' || isNaN(num)) {
-        return 'Error: Input must be a valid number';
-    }
-    return num < 0 ? -(Math.abs(num) | 0) : (num | 0);
+    return num < 0 ? (- Math.abs(num) | 0) : (num | 0);
 }
 
 // const nums = [3.7, -3.7, 3.1, -3.1]
