@@ -15,12 +15,12 @@ function keepLast(str) {
     return str.length >= 1 ? str.slice(-2) : '';
 }
 function keepFirstLast(str) {
-    return str.length <= 4 ? '': str.slice(0, 2) + str.slice(-2);
+    return str.length <= 4 ? str: str.slice(0, 2) + str.slice(-2);
 
 }
 console.log(cutFirst("hello"))
 console.log(cutLast("helloyou"))
 console.log(cutFirstLast("hellothere"))
 console.log(keepFirst("how"))
-console.log(keepLast("hello"))
-console.log(keepFirstLast("hellothere"))
+console.log(keepLast("hel"))
+console.log(keepFirstLast("hre"))
