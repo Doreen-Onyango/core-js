@@ -37,18 +37,30 @@ function modulo(a, b) {
 }
 
 function round(num) {
+      if (typeof num !== 'number' || isNaN(num)) {
+        return 'Error: Input must be a valid number';
+    }
     return num < 0 ? -(Math.abs(num) + 0.5 | 0) : (num + 0.5) | 0;
 }
 
 function ceil(num) {
+      if (typeof num !== 'number' || isNaN(num)) {
+        return 'Error: Input must be a valid number';
+    }
     return num === (num | 0) ? num : (num < 0 ? (num | 0) : (num | 0) + 1);
 }
 
 function floor(num) {
+      if (typeof num !== 'number' || isNaN(num)) {
+        return 'Error: Input must be a valid number';
+    }
     return num > 0 ? (num | 0) : (num | 0) - (modulo(num, 1) !== 0 ? 1 : 0);
 }
 
 function trunc(num) {
+      if (typeof num !== 'number' || isNaN(num)) {
+        return 'Error: Input must be a valid number';
+    }
     return num < 0 ? -(Math.abs(num) | 0) : (num | 0);
 }
 
