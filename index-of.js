@@ -3,8 +3,7 @@
 // Array.prototype.includes = undefined
 
 let arr = ['hello', 'there', 'how', 'are', 'you', 'are']
-function indexOf(arr, value) {
-    let fromIndex = 0
+function indexOf(arr, value, fromIndex = 0) {
     if (fromIndex < 0) {
         fromIndex = Math.max(0, arr.length + fromIndex);
     }
@@ -38,6 +37,6 @@ function includes(arr, value) {
     return false
 }
 
-console.log(indexOf(arr, 'are'))
+console.log(indexOf(arr, 'are', 4))
 console.log(lastIndexOf(arr, 'are'))
 console.log(includes(arr, 'hello'))
