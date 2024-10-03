@@ -15,8 +15,7 @@ function indexOf(arr, value, fromIndex = 0) {
     }
     return -1;
 }
-function lastIndexOf(arr, value) {
-    let fromIndex = arr.length - 1
+function lastIndexOf(arr, value, fromIndex = arr.length - 1) {
     if (fromIndex < 0) {
         fromIndex = Math.max(0, arr.length + fromIndex);
     }
