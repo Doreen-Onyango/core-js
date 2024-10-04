@@ -22,14 +22,23 @@ function split(str, delimiter) {
     if (currentIndex > 0 && currentIndex === str.length) {
         result.push('');
     }
-
-    const delimiterCount = (str.match(new RegExp(delimiter, 'g')) || []).length;
-    if (delimiterCount > 0 && result.length <= delimiterCount) {
-        return Array(delimiterCount).fill('');
+    let pattern = new RegExp(/delimiter/, 'g');
+    let matches = str.match(pattern);
+    // (str.match(new RegExp(delimiter, 'g')) || []).length;
+    if (matches) {
+        const delimiterCount = /delimiter/g.length;
+        if (delimiterCount > 0 && result.length <= delimiterCount) {
+            return Array(delimiterCount).fill('');
+        } else {
+            const delimiterCount = 0;
+            if (delimiterCount > 0 && result.length <= delimiterCount) {
+                return Array(delimiterCount).fill('');
+            }
+        }
     }
 
     return result;
 }
 
-// console.log(split("rrrr", "rr"));
+// console.log(split("a b c", " "));
 // console.log("rrrr".split("rr"));
