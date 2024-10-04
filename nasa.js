@@ -1,17 +1,24 @@
-function nasa(N, cur) {
-    if (cur > N) {
-        return '';
+function nasa(N) {
+ let result = '';
+    let cur = 1;
+
+    while (cur <= N) {
+        if (cur % 3 === 0 && cur % 5 === 0) {
+            result += 'NASA';
+        } else if (cur % 3 === 0) {
+            result += 'NA';
+        } else if (cur % 5 === 0) {
+            result += 'SA';
+        } else {
+            result += cur;
+        }
+        if (cur < N) {
+            result += ' ';
+        }
+        
+        cur++;
     }
-    let result = "";
-    if (cur % 3 === 0 && cur % 5 === 0) {
-        result = 'NASA';
-    } else if (cur % 3 === 0) {
-        result = 'NA';
-    } else if (cur % 5 === 0) {
-        result = 'SA';
-    } else {
-        result = cur;
-    }
-    return result + (cur <= N ? ' ' : '') + nasa(N, cur+1);
+
+    return result;
 }
-console.log(nasa(15, 1))
+// console.log(nasa(15))
