@@ -1,45 +1,51 @@
-function split(str, delimiter) {
-    // Check if the delimiter is an empty string
-    if (delimiter === '') {
-        return str.split('').map(char => char); // Return each character as an array element
-    }
+// String.prototype.split = undefined
+// String.prototype.match = undefined
+// RegExp.prototype.exec = undefined
+// Array.prototype.join = undefined
 
-    const result = [];
-    let currentIndex = 0;
+function split(str, sep) {
+    let result = [];
+    let curStrIndex = '';
 
-    while (currentIndex < str.length) {
-        // Find the next occurrence of the delimiter
-        const delimiterIndex = str.indexOf(delimiter, currentIndex);
-
-        if (delimiterIndex === -1) {
-            // If no more delimiters are found, push the remaining part of the string
-            result.push(str.slice(currentIndex));
-            break;
+    if (sep === "") {
+        for (let i = 0; i < arr.length; i++) {
+            result.push(str[i])
         }
-
-        // Push the substring before the delimiter
-        result.push(str.slice(currentIndex, delimiterIndex));
-
-        // Move currentIndex past the delimiter
-        currentIndex = delimiterIndex + delimiter.length;
+        return result
     }
-
-    // Check if we need to add an empty string at the end
-    if (currentIndex > 0 && currentIndex === str.length) {
-        result.push('');
+    for (let i = 0; i <= str.length; i++) {
+        if (i === str.length || str[i] === sep[0]) {
+            let match = true;
+            for (let j = 0; j < sep.length; j++) {
+                if (str[i+j] !== sep[j]) {
+                    match= false
+                    break
+                }
+            }
+            if (match) {
+                result.push(str.slice(curStrIndex, i));
+                curStrIndex =i + sep.length
+                i+= sep.length-1
+            }
+        }
     }
-
-    // Handle case for consecutive delimiters
-    const delimiterCount = (str.split(delimiter).length - 1); // Count occurrences of the delimiter
-    if (delimiterCount > 0 && result.length <= delimiterCount) {
-        return Array(delimiterCount + 1).fill(''); // Return an array filled with empty strings
-    }
-
-    return result; // Return the final array of split parts
+    result.push(str.slice(curStrIndex));
+    return result
 }
 
-// Example usage of split function
-console.log(split("a b c", " "));      // Output: ['a', 'b', 'c']
-console.log(split("rrrr", "rr"));       // Output: ['', '', '']
-console.log(split("one|two|three", "|"));// Output: ['one', 'two', 'three']
-console.log(split("test", ""));         // Output: ['t', 'e', 's', 't']
+function join(arr, sep) {
+    let result = '';
+    for (let i = 0; i < arr.length; i++){
+        result += arr[i]
+        
+        if (i < arr.length-1) {
+            result += sep;
+        }
+    }
+    return result
+}
+
+// let arr = ["hello", "there", "how", "are", "you"]
+// console.log(split("a b c", " "));
+// console.log(split(arr, ","))
+
