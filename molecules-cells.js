@@ -1,4 +1,4 @@
-function RNAtoDNA(str) {
+function RNA(str) {
     let newstr = ""
     for (let i = 0; i <= str.length -1; i++) {
         if (str[i]=== "G") {
@@ -14,7 +14,7 @@ function RNAtoDNA(str) {
     return newstr
 }
 
-function DNAtoRNA(str) {
+function DNA(str) {
     let newstr = ""
     for (let i = 0; i <= str.length -1; i++) {
         if (str[i]=== "G") {
@@ -29,5 +29,5 @@ function DNAtoRNA(str) {
     }
     return newstr
 }
-// console.log(DNAtoRNA("ATCG")); 
-// console.log(RNAtoDNA("UAGC")); 
+console.log(DNA("ATCG")); 
+console.log(RNA("UAGC")); 
