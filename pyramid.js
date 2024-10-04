@@ -1,13 +1,21 @@
 function pyramid(char, h) {
-    let result = '';
+      let result = "";
+    const charLength = char.length;
+
     for (let i = 1; i <= h; i++) {
-        const spaces = ' '.repeat(h - i);
-        const chars = char.repeat(2 * i - 1);
-        result += spaces + chars;
+        let chars = char.repeat(2 * i - 1);
+        let baseWidth = charLength * (2 *h - 1);
+        let levelWidth = charLength * (2 * i - 1);
+        let spaces = " ".repeat((baseWidth - levelWidth) / 2);
         if (i !== h) {
-            result += '\n';
+           result += spaces + chars + '\n';
+        } else {
+           result += spaces + chars  
         }
     }
+    
     return result;
 }
+
+
 console.log(pyramid('*', 8));
