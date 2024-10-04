@@ -10,14 +10,14 @@ function split(str, sep) {
     for (let i = 0; i < str.length; i++) {
         const ch = str[i];
         if (ch === sep) {
-            result.push(curStr);
+            result.push(curStr.trim());
             curStr = '';
         } else {
             curStr += ch;
         }
     }
     if (curStr) {
-        result.push(curStr);
+        result.push(curStr.trim());
     }
     
     return result;
@@ -35,6 +35,6 @@ function join(arr, sep) {
     return result
 }
 let arr = ['hello', "Dorah"]
-let str = "hello Dorah, there"
+let str = 'ggg - ddd - b'
 console.log(join(arr, "-"))
-console.log(split(str, ","))
+console.log(split(str, "-"))
