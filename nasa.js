@@ -10,8 +10,8 @@ function nasa(N, cur) {
     } else if (cur % 5 === 0) {
         result = 'SA';
     } else {
-        result = cur;
+        result = cur.toString();
     }
     return result + (cur < N ? ' ' : '') + nasa(N, cur + 1);
 }
-// console.log(nasa(15, 1))
+console.log(nasa(15, 1))
