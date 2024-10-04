@@ -1,79 +1,52 @@
 // Math.round = Math.ceil = Math.floor = Math.trunc = undefined
 
-function multiply(a, b) {
-    let result = 0;
-    const isNeg = (b < 0);
-    b = Math.abs(b)
+function checkInt(num) {
+    const sign = num >= 0 ? 1 : -1;
+    num = Math.abs(num)
 
-    for (let i = 0; i < b; i++) {
-        result += a;
+    let placeValue = 1
+    let result = 0
+
+    while (placeValue <= num) {
+        placeValue *= 10
     }
-    return isNeg ? -result : result;
+    placeValue /= 10
+
+    while (placeValue >= 1) {
+        while (result + placeValue <= num) {
+            result += placeValue
+        }
+        placeValue /= 10
+    }
+    return sign * result
 }
-
-function divide(a, b) {
-    if (b === 0) {
-        throw new Error("no division by zero");
-    }
-    let c = 0
-    const isNeg = ((a < 0) !== (b < 0))
-    a = Math.abs(a);
-    b = Math.abs(b);
-
-    while (a >= b) {
-        a -= b;
-        c++;
-    }
-    return isNeg ? -c : c;
-}
-
-function modulo(a, b) {
-    if (b === 0) {
-        throw new Error("no modulo by zero");
-    }
-    const divResult = divide(a, b);
-    return a - multiply(divResult, b);
-}
-
 function round(num) {
-    if (typeof num !== 'number' || num !== num) { 
-        return 'Error: Input must be a valid number';
-    }
-
-    const isNeg = num < 0;
-    num = isNeg ? -num : num;
-
-    const roundedValue = (num + 0.5) | 0; 
-    return isNeg ? -roundedValue : roundedValue;
+   let newInt = checkInt(num)
+   let dec = Math.abs(num-newInt)
+   if (dec < 0.5) {
+    return newInt
+   }
+   return num >= 0 ? newInt+1 : newInt-1
 }
 
 function ceil(num) {
-    if (typeof num !== 'number' || num !== num) { 
-        return 'Error: Input must be a valid number';
+    let newInt = checkInt(num)
+    if (num === newInt) {
+        return num
     }
-
-    const isNeg = num < 0;
-
-    if (isNeg) {
-        return num | 0; 
-    } else {
-        return num === (num | 0) ? num : (num | 0) + 1; 
-    }
+    return num> 0? newInt+1 : newInt
 }
 
 function floor(num) {
-    const isNeg = num < 0;
-
-    if (!isNeg) {
-        return num | 0; 
-    } else {
-        return (num | 0) - (modulo(num, 1) !== 0 ? 1 : 0);
+    let newInt = checkInt(num)
+    if (num === newInt) {
+        return num
     }
-
+    return num  > 0 ? newInt : newInt-1
 }
 
 function trunc(num) {
-    return num < 0 ? (- Math.abs(num) | 0) : (num | 0);
+    return checkInt(num)
 }
 
 // const nums = [3.7, -3.7, 3.1, -3.1]
