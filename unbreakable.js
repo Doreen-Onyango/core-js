@@ -3,23 +3,24 @@
 // RegExp.prototype.exec = undefined
 // Array.prototype.join = undefined
 
-function split(str, sep){
+function split(str, sep) {
     const result = [];
     let curStr = '';
 
     for (let i = 0; i < str.length; i++) {
-        const ch = str[i]
+        const ch = str[i];
         if (ch === sep) {
             result.push(curStr);
             curStr = '';
         } else {
-            curStr += ch
+            curStr += ch;
         }
     }
     if (curStr) {
-        result.push(curStr)
+        result.push(curStr);
     }
-    return curStr
+    
+    return result;
 }
 
 function join(arr, sep) {
@@ -34,6 +35,6 @@ function join(arr, sep) {
     return result
 }
 let arr = ['hello', "Dorah"]
-let str = "hello Dorah"
+let str = "hello Dorah, there"
 console.log(join(arr, "-"))
 console.log(split(str, ","))
