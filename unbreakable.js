@@ -1,40 +1,35 @@
-// String.prototype.split = undefined
-// String.prototype.match = undefined
-// RegExp.prototype.exec = undefined
-// Array.prototype.join = undefined
+function split(str, delimiter) {
+    if (delimiter === '') {
+        return str;
+    }
 
-function split(str, sep) {
     const result = [];
-    let curStr = '';
+    let currentIndex = 0;
 
-    for (let i = 0; i < str.length; i++) {
-        const ch = str[i];
-        if (ch === sep) {
-            result.push(curStr.trim());
-            curStr = '';
-        } else {
-            curStr += ch;
+    while (currentIndex < str.length) {
+        const delimiterIndex = str.indexOf(delimiter, currentIndex);
+
+        if (delimiterIndex === -1) {
+            result.push(str.slice(currentIndex));
+            break;
         }
+
+        result.push(str.slice(currentIndex, delimiterIndex));
+
+        currentIndex = delimiterIndex + delimiter.length;
     }
-    if (curStr) {
-        result.push(curStr.trim());
+
+    if (currentIndex > 0 && currentIndex === str.length) {
+        result.push('');
     }
-    
+
+    const delimiterCount = (str.match(new RegExp(delimiter, 'g')) || []).length;
+    if (delimiterCount > 0 && result.length <= delimiterCount) {
+        return Array(delimiterCount).fill('');
+    }
+
     return result;
 }
 
-function join(arr, sep) {
-    let result = '';
-    for (let i = 0; i < arr.length; i++){
-        result += arr[i]
-        
-        if (i < arr.length-1) {
-            result += sep;
-        }
-    }
-    return result
-}
-let arr = ['hello', "Dorah"]
-let str = 'ggg - ddd - b'
-console.log(join(arr, "-"))
-console.log(split(str, "-"))
+// console.log(split("rrrr", "rr"));
+// console.log("rrrr".split("rr"));
