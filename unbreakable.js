@@ -8,7 +8,7 @@ function split(str, sep) {
     let curStrIndex = '';
 
     if (sep === "") {
-        for (let i = 0; i < arr.length; i++) {
+        for (let i = 0; i < str.length; i++) {
             result.push(str[i])
         }
         return result
