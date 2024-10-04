@@ -14,4 +14,4 @@ function nasa(N, cur) {
     }
     return result + (cur < N ? ' ' : '') + nasa(N, cur + 1);
 }
-console.log(nasa(15, 3))
+// console.log(nasa(15, 1))
