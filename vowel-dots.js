@@ -1,6 +1,6 @@
-const vow = /[aeiou]/gi;
+const vowels = /[aeiou]/gi;
 
 function vowelDots(str) {
-  return str.replace(vow, match => match + '.');
+  return str.replace(vowels, match => match + '.');
 }
 // console.log(vowelDots("hello"))
