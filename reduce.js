@@ -1,3 +1,10 @@
+const fold = (arr, fn, acc) => {
+  for (let i = 0; i < arr.length; i++) {
+    acc = fn(acc, arr[i]);
+  }
+  return acc;
+};
+
 // FoldRight function
 const foldRight = (arr, fn, acc) => {
   for (let i = arr.length - 1; i >= 0; i--) {
