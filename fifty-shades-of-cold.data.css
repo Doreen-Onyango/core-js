@@ -6,13 +6,11 @@
     --disabled: hsl(0, 0%, 35%);
     --purple: #bb73e6;
   }
-  
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  
   body {
     font-family: sans-serif;
     letter-spacing: 1.5px;
@@ -25,7 +23,6 @@
     padding: 5rem;
     font-size: 12px;
   }
-  
   div {
     cursor: pointer;
     width: 150px;
@@ -33,3 +30,4 @@
     margin: 20px;
     padding: 5px 8px;
   }
+  
