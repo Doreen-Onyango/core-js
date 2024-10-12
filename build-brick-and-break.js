@@ -28,3 +28,24 @@ const createBrick = (id, content, isFoundation) => {
       }
     }, 100);
   }
+
+  export function repair(...repairIds) {
+    repairIds.forEach(id => {
+      const brick = document.getElementById(id);
+      if (!brick) return;
+  
+      const brickNumber = parseInt(id.replace('brick-', ''));
+      const isInProgress = brickNumber % 3 === 2;
+  
+      brick.dataset.repaired = isInProgress ? 'in progress' : 'true';
+      brick.textContent = brickNumber;
+    });
+  }
+  
+  export function destroy() {
+    const bricks = document.querySelectorAll('div[id^="brick"]');
+    const lastBrick = bricks[bricks.length - 1];
+    if (lastBrick) {
+      lastBrick.remove();
+    }
+  }
