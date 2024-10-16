@@ -1,8 +1,8 @@
 function filterValues(arr, callback) {
-    const filtered = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (callback(arr[i], i, arr)) {
-            filtered.push(arr[i])
+    const filtered = {};
+    for ( const [key, value] of Object.entries(obj)) {
+        if (func(value)) {
+            filtered[key] = value
         }
     }
     return filtered
