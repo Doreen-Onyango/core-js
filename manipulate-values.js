@@ -1,7 +1,7 @@
 function filterValues(arr, callback) {
     const filtered = {};
     for ( const [key, value] of Object.entries(obj)) {
-        if (func(value)) {
+        if (callback(value)) {
             filtered[key] = value
         }
     }
