@@ -1,4 +1,4 @@
-function filterValues(arr, callback) {
+function filterValues(obj, callback) {
     const filtered = {};
     for ( const [key, value] of Object.entries(obj)) {
         if (callback(value)) {
@@ -8,32 +8,22 @@ function filterValues(arr, callback) {
     return filtered
 }
 
-function mapValues(arr, callback) {
-    const mapped = [];
-        for (let i = 0; i < arr.length; i++) {
-            mapped[i] = callback(arr[i], i, arr);
-        }
-        return mapped;
+function mapValues(obj, callback) {
+    const mapped = {};
+    for ( const [key, value] of Object.entries(obj)) {
+       mapped[key] = callback(value) 
+    }
+    return mapped
+
 }
 
-function reduceValues(arr, callback, initialValue) {
-    let accumulator = initialValue;
-
-    let startIndex = 0;
-
-    if (initialValue === undefined) {
-        if (arr.length === 0) {
-            throw new TypeError('Reduce of empty array with no initial value');
-        }
-        accumulator = arr[0];
-        startIndex = 1;
+function reduceValues(obj, callback, initialValue = 0) {
+    let reduced = initialValue
+    for ( const value of Object.values(obj)) {
+        reduced = callback(reduced, value)
     }
+    return reduced;
 
-    for (let i = startIndex; i < arr.length; i++) {
-        accumulator = callback(accumulator, arr[i], i, arr); 
-    }
-
-    return accumulator; 
 }
 
 // const nutritionDB = {
