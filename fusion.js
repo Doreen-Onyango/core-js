@@ -1,35 +1,36 @@
-function fusion(obj1, obj2) {
-    const result = { ...obj1 };
+function fusion(obj1 = {}, obj2 = {}) {
+    let newobj = {};
+  
+    for (const key in obj1) {
+      if (obj1.hasOwnProperty(key)) {
 
-    for (const key in obj2) {
-        if (obj2.hasOwnProperty(key)) {
-            const value1 = obj1[key];
-            const value2 = obj2[key];
-            // concatenate
-            if (Array.isArray(value1) && Array.isArray(value2)) {
-                result[key] = [...value1, ...value2];
+        if (Array.isArray(obj1[key]) && Array.isArray(obj2[key])) {
+          newobj[key] = [...obj1[key], ...obj2[key]];
 
-                // concatenate with space
-            } else if (typeof value1 === 'string' && typeof value2 === 'string') {
-                result[key] = `${value1} ${value2}`.trim();
-                
-                // addition
-            } else if (typeof value1 === 'number' && typeof value2 === 'number') {
-                result[key] = value1 + value2;
+        } else if (typeof obj1[key] === "string" && typeof obj2[key] === "string") {
+          newobj[key] = obj1[key] + " " + obj2[key];
 
-                // join recursively
-            } else if (typeof value1 === 'object' && value1 !== null && typeof value2 === 'object' && value2 !== null) {
-                result[key] = fusion(value1, value2);
-                
-                // replace with value of second object
-            } else {
-                result[key] = value2;
-            }
+        } else if (typeof obj1[key] === "number" && typeof obj2[key] === "number") {
+          newobj[key] = obj1[key] + obj2[key];
+
+        } else if (typeof obj1[key] === "object" && typeof obj2[key] === "object" && obj1[key] !== null && obj2[key] !== null) {
+          newobj[key] = fusion(obj1[key], obj2[key]);
+
+        } else if (typeof obj2[key] !== "undefined") {
+          newobj[key] = obj2[key];
+          
+        } else {
+          newobj[key] = obj1[key];
         }
+      }
     }
-
-    return result;
-}
+    for (const key in obj2) {
+      if (obj2.hasOwnProperty(key) && typeof obj1[key] === "undefined") {
+        newobj[key] = obj2[key];
+      }
+    }
+    return newobj;
+  }
 
 console.log(fusion({ arr: [1, "2"] }, { arr: [2] })); // { arr: [ 1, '2', 2 ] }
 console.log(fusion({ arr: [], arr1: [5] }, { arr: [10, 3], arr1: [15, 3], arr2: ["7", "1"] })); // { arr: [ 10, 3 ], arr1: [ 5, 15, 3 ], arr2: [ '7', '1' ] }
