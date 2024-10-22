@@ -8,5 +8,5 @@ const veryDisco = (str) => {
   }).join(' ');
 };
 
-const result = veryDisco("Discovery");
-console.log(result);
+// const result = veryDisco("Discovery");
+// console.log(result);
