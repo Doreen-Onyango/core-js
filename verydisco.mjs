@@ -1,5 +1,5 @@
 const input = process.argv[2];
-let arr = arg.split(' ')
+let arr = input.split(' ')
 let arr1 = []
 for (let i = 0; i <= arr.length -1; i++) {
     let l = arr[i].length
