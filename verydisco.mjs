@@ -1,12 +1,12 @@
 const input = process.argv[2];
-const veryDisco = (str) => {
-  return str.split(' ').map(word => {
-    const midIndex = Math.ceil(word.length / 2);
-    const firstPart = word.slice(0, midIndex);
-    const secondPart = word.slice(midIndex);
-    return secondPart + firstPart;
-  }).join(' ');
-};
+let arr = arg.split(' ')
+let arr1 = []
+for (let i = 0; i <= arr.length -1; i++) {
+    let l = arr[i].length
+    let le = Math.round(l/2)
+    arr1.push(arr[i].slice(le) + arr[i].slice(0, le))
+}
+console.log(arr1.join(' '));
 
 // const result = veryDisco("Discovery");
 // console.log(result);
