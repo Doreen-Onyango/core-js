@@ -10,4 +10,4 @@ for (let i = 0; i <= arr.length -1; i++) {
 }
 console.log(arr1.join(' '));
 
-fs.writeFile("verydisco-forever.txt", s)
+fs.writeFile("verydisco-forever.txt", arr1.join(' '))
