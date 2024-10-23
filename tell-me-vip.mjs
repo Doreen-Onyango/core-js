@@ -26,7 +26,6 @@ try {
   console.error("Error:", err);
 }
 
-
 async function answeredYes(filename) {
     try {
       const data = await fs.readFile(filename, "utf8");
