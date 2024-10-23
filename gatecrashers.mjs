@@ -56,6 +56,9 @@ const server = http.createServer((req, res) => {
                 res.end(JSON.stringify({ error: 'Internal Server Error' }))
             }
         })
+    }  else {
+        res.writeHead(405, { 'Content-Type': 'application/json' })
+        res.end(JSON.stringify({ error: 'Method not allowed' }))
     }
 })
 
