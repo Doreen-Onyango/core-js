@@ -41,3 +41,8 @@ const server = http.createServer(async (req, res) => {
     sendResponse(res, 500, { error: 'server failed' });
   }
 });
+function sendResponse(res, statusCode, data) {
+    res.writeHead(statusCode);
+    res.end(JSON.stringify(data));
+  }
+  
