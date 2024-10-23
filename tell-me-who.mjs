@@ -5,7 +5,7 @@ if (input === undefined) {
     input = process.argv[1]
 }
 
-const data = await fs.readdir(input, "ut8")
+const data = await fs.readdir(input, "utf8")
 let arr = []
 
 for (let i = 0; i <= data.length - 1; i++) {
