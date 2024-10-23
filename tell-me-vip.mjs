@@ -25,3 +25,15 @@ try {
 } catch (err) {
   console.error("Error:", err);
 }
+
+
+async function answeredYes(filename) {
+    try {
+      const data = await fs.readFile(filename, "utf8");
+      const jsonData = JSON.parse(data);
+      return jsonData.answer === "yes";
+    } catch (err) {
+      console.error("Error reading/parsing file:", filename, err);
+      return false;
+    }
+  }
