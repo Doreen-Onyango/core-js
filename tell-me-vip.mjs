@@ -10,7 +10,7 @@ try {
   const data = await fs.readdir(input, "utf8");
   let arr = [];
   for (let i = 0; i < data.length; i++) {
-    if (await saidYes(path.join(input, data[i]))) {
+    if (await answeredYes(path.join(input, data[i]))) {
       let s = data[i].replace(/\.json$/, "");
       let [lastName, firstName] = s.split("_");
       arr.push(`${firstName} ${lastName}`);
